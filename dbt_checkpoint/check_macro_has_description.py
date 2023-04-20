@@ -28,10 +28,13 @@ def has_description(paths: Sequence[str], manifest: Dict[str, Any]) -> Dict[str,
     schemas = get_macro_schemas(list(ymls.values()), filenames)
     # convert to sets
     in_macros = {macro.filename for macro in macros if macro.macro.get("description")}
+    print('DEBUG in_macros: ', in_macros)
     in_schemas = {
         schema.macro_name for schema in schemas if schema.schema.get("description")
     }
+    print('DEBUG in_schemas: ', in_schemas)
     missing = filenames.difference(in_macros, in_schemas)
+    print('DEBUG missing: ', missing)
 
     for macro in missing:
         status_code = 1
