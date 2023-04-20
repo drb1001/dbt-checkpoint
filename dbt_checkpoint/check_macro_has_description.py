@@ -21,9 +21,11 @@ def has_description(paths: Sequence[str], manifest: Dict[str, Any]) -> Dict[str,
     ymls = get_filenames(paths, [".yml", ".yaml"])
     sqls = get_macro_sqls(paths, manifest)
     filenames = set(sqls.keys())
+    print('DEBUG filenames: ', filenames)
 
     # get manifest macros that pre-commit found as changed
     macros = get_macros(manifest, filenames)
+    print('DEBUG macros: ', macros)
     # if user added schema but did not rerun the macro
     schemas = get_macro_schemas(list(ymls.values()), filenames)
     # convert to sets
