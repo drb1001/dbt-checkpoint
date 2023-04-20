@@ -196,7 +196,7 @@ def get_macro_sqls(paths: Sequence[str], manifest: Dict[str, Any]) -> Dict[str, 
     sqls = get_filenames(paths, [".sql"])
     macro_paths = [m["path"] for m in manifest.get("macros", {}).values()]
     macro_sqls = get_filenames(macro_paths, extensions=[".sql"])
-    return {k: v for k, v in sqls.items() if k in macro_sqls and v == macro_sqls[k]}
+    return {k: v for k, v in sqls.items() if k in macro_sqls}
 
 
 def get_model_sqls(paths: Sequence[str], manifest: Dict[str, Any]) -> Dict[str, Any]:
